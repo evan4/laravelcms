@@ -64,7 +64,7 @@
                 </ul>
             </div>
         </div>
-        <!-- 
+        
         <div class="widget">
             <div class="widget-heading">
                 <h4>Tags</h4>
@@ -82,6 +82,6 @@
                 </ul>
             </div>
         </div>
-        -->
+        
     </aside>
 </div>
