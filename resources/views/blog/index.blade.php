@@ -9,17 +9,8 @@
                     <p>Nothing found</p>
                 </div>
             @else
-                @isset($categoryName)
-                <div class="alert alert-info">
-                    <p>Category <syrong>{{ $categoryName }}</syrong></p>
-                </div>
-                @endisset
+               @include('blog.alert')
 
-                @isset($authorName)
-                <div class="alert alert-info">
-                    <p>Author <syrong>{{ $authorName }}</syrong></p>
-                </div>
-                @endisset
             @endif
 
             @foreach($posts as $post)
@@ -57,7 +48,7 @@
             </article>
             @endforeach
             <nav>
-               {{$posts->links()}}
+               {{$posts->appends(request()->only(['term']))->links()}}
             </nav>
         </div>
         @include('layouts.sidebar')

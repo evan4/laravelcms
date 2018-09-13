@@ -21,7 +21,10 @@ class PostController extends Controller
         //\DB::enableQueryLog();
         $posts = Post::latestFirst()
             ->published()
+            ->filter(request('term'))
             ->simplePaginate($this->limit);
+
+        
         //$posts = Post::with('author')->get();
 
         //dd( $posts);
