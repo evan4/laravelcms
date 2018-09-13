@@ -4,6 +4,12 @@
 </div>
 @endisset
 
+@isset($tagName)
+<div class="alert alert-info">
+    <p>tag <syrong>{{ $tagName }}</syrong></p>
+</div>
+@endisset
+
 @isset($authorName)
 <div class="alert alert-info">
     <p>Author <syrong>{{ $authorName }}</syrong></p>

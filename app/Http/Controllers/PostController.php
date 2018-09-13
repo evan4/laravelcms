@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Category;
 use App\User;
+use App\Tag;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -47,6 +48,22 @@ class PostController extends Controller
         //dd( $posts);
         
         return view('blog.index', compact('posts',  'categoryName'));
+    }
+
+    public function tag(Tag $tag)
+    {
+        $tagName = $tag->title;
+
+        //\DB::enableQueryLog();
+        $posts = $tag
+            ->posts()
+            ->latestFirst()
+            ->published()
+            ->simplePaginate($this->limit);
+       
+        //dd( $posts);
+        
+        return view('blog.index', compact('posts',  'tagName'));
     }
 
     public function author(User $author)

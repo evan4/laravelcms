@@ -19,6 +19,9 @@ Route::get('/category/{category}', 'PostController@category')->name('category');
 
 Route::get('/author/{author}', 'PostController@author')->name('author');
 
+Route::get('/tag/{tag}', 'PostController@tag')->name('tag');
+
+
 Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');

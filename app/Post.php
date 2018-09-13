@@ -68,6 +68,16 @@ class Post extends Model
         return $this->excerpt ? Markdown::convertToHtml(e($this->excerpt)) : null;
     }
 
+    public function getTagsHtmlAttribute($value)
+    {
+        $anchors = [];
+
+        foreach($this->tags as $tag){
+            $anchors[] = '<a href="' . route('tag', $tag->slug) . '">' . $tag->name . '</a>';
+        }
+        return implode(", ", $anchors);
+    }
+
     public function dateFormatted($showTimes = false)
     {
         $format = 'd/m/Y';
