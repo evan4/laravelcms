@@ -84,15 +84,12 @@
             </div>
             <div class="widget-body">
                 <ul class="categories">
+                    @foreach($archives as $archive)
                     <li>
-                        <a href="@">March 2017</a>
+                        <a href="{{ route('blog.index', ['month' => $archive->month, 'year' => $archive->year]) }}">{{ $archive->month . " " . $archive->year }}</a>
+                        <span class="badge pull-right">{{ $archive->post_count }}</span>
                     </li>
-                    <li>
-                         <a href="@">February 2017</a>
-                    </li>
-                    <li>
-                        <a href="@">January 2017</a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

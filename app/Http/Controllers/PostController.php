@@ -22,7 +22,7 @@ class PostController extends Controller
         //\DB::enableQueryLog();
         $posts = Post::latestFirst()
             ->published()
-            ->filter(request('term'))
+            ->filter(request()->only(['term', 'year', 'month']))
             ->simplePaginate($this->limit);
 
         
