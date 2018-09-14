@@ -113,6 +113,11 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function commnets()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function scopeLatestFirst($query)
     {
         return $query->orderBy('created_at', 'desc');
