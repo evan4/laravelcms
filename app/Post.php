@@ -113,9 +113,15 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function commnets()
+    public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function commentsNumber($label = 'Comment')
+    {
+        $commentsCount = $this->comments->count();
+        return $commentsCount ." ".str_plural($label, $commentsCount);
     }
 
     public function scopeLatestFirst($query)
