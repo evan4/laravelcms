@@ -9,7 +9,7 @@ class Comment extends Model
 {
     protected $fillable = [
         'author_name', 'author_email', 'author_url', 'body', 'post_id'
-    ];
+    ];  
 
     public function poste()
     {

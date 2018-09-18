@@ -18,9 +18,9 @@
                 {!! $postComments->links() !!}
             </nav>
         </div>
-        {{-- @if (session('message'))
+        @if (session('message'))
             <div class="alert alert-info">{{ session('message') }}</div>
-        @endif --}}
+        @endif
         <div class="comment-footer padding-10">
             <h3>Leave a comment</h3>
             <form action="{{ route('blog.comments', ['slug'=>$post->slug]) }}" method="post">
