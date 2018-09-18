@@ -18,29 +18,41 @@
                 {!! $postComments->links() !!}
             </nav>
         </div>
-
+        {{-- @if (session('message'))
+            <div class="alert alert-info">{{ session('message') }}</div>
+        @endif --}}
         <div class="comment-footer padding-10">
             <h3>Leave a comment</h3>
-            <form>
-                <div class="form-group required">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control">
+            <form action="{{ route('blog.comments', ['slug'=>$post->slug]) }}" method="post">
+                @csrf
+                <div class="form-group required {{ $errors->has('author_name') ? 'has-error' : '' }}">
+                    <label for="author_name">Name</label>
+                    <input type="text" name="author_name" id="author_name" class="form-control">
+                    @if($errors->has('author_name'))
+                    <span class="help-block">{{ $errors->first('author_name') }}</span> 
+                    @endif
                 </div>
-                <div class="form-group required">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" class="form-control">
+                <div class="form-group required {{ $errors->has('author_email') ? 'has-error' : '' }}">
+                    <label for="author_email">Email</label>
+                    <input type="email" name="author_email" id="author_email" class="form-control">
+                    @if($errors->has('author_email'))
+                    <span class="help-block">{{ $errors->first('author_email') }}</span> 
+                    @endif
                 </div>
                 <div class="form-group">
-                    <label for="website">Website</label>
-                    <input type="text" name="website" id="website" class="form-control">
+                    <label for="author_url">Website</label>
+                    <input type="text" name="author_url" id="author_url" class="form-control">
                 </div>
-                <div class="form-group required">
-                    <label for="comment">Comment</label>
-                    <textarea name="comment" id="comment" rows="6" class="form-control"></textarea>
+                <div class="form-group required {{ $errors->has('body') ? 'has-error' : '' }}">>
+                    <label for="body">Comment</label>
+                    <textarea name="body" id="body" rows="6" class="form-control"></textarea>
+                    @if($errors->has('body'))
+                    <span class="help-block">{{ $errors->first('body') }}</span> 
+                    @endif
                 </div>
                 <div class="clearfix">
                     <div class="pull-left">
-                        <button type="submit" class="btn btn-lg btn-success">Submit</button>
+                        <input type="submit" class="btn btn-lg btn-success" value="Leave a comment">
                     </div>
                     <div class="pull-right">
                         <p class="text-muted">

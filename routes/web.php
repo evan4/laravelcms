@@ -15,6 +15,8 @@ Route::get('/', 'PostController@index')->name('blog.index');
 
 Route::get('/blog/{post}', 'PostController@show')->name('blog.show');
 
+Route::post('/blog/{post}/comments', 'CommentsController@store')->name('blog.comments');
+
 Route::get('/category/{category}', 'PostController@category')->name('category');
 
 Route::get('/author/{author}', 'PostController@author')->name('author');

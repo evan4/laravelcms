@@ -7,8 +7,10 @@
         </div>
         <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
             <label for="slug">Slug</label>
-            <input type="text" class="form-control" name="slug" id="slug" value="{{$category->slug}}"> @if($errors->has('slug'))
-            <span class="help-block">{{ $errors->first('slug') }}</span> @endif
+            <input type="text" class="form-control" name="slug" id="slug" value="{{$category->slug}}"> 
+            @if($errors->has('slug'))
+            <span class="help-block">{{ $errors->first('slug') }}</span> 
+            @endif
         </div>
     </div>
     <div class="box-footer">
